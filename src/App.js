@@ -24,6 +24,12 @@ function App() {
     return recipes.filter((recipe) => recipe.sys.id === id)[0];
   };
 
+  const getCatgoryList = () => {
+    return [
+      ...new Set(recipes.map((recipe) => recipe.metadata.tags[0].sys.id)),
+    ];
+  };
+
   useEffect(() => {
     client
       .getEntries()
@@ -35,7 +41,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar categoryList={getCatgoryList()} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         {recipes && (

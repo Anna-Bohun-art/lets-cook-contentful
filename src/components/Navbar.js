@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({ categoryList }) {
   return (
     <div className="navbar">
       <h3>
@@ -8,21 +8,13 @@ export default function Navbar() {
           Home
         </NavLink>
       </h3>
-      <h3>
-        <NavLink className="nav-item" to="/salad">
-          Salads
-        </NavLink>
-      </h3>
-      <h3>
-        <NavLink className="nav-item" to="/seafood">
-          Seafood
-        </NavLink>
-      </h3>
-      <h3>
-        <NavLink className="nav-item" to="/bread">
-          Bread
-        </NavLink>
-      </h3>
+      {categoryList.map((category) => (
+        <h3>
+          <NavLink className="nav-item" to={category}>
+            {category}
+          </NavLink>
+        </h3>
+      ))}
     </div>
   );
 }
