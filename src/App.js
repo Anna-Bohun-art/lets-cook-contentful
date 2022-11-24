@@ -1,8 +1,8 @@
 import { client } from "./client";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
 import Category from "./components/Category";
 import Recipe from "./components/Recipe";
 import ErrorPage from "./components/ErrorPage";
@@ -20,11 +20,8 @@ function App() {
     );
   };
 
-  const filterRecipe = (category, id) => {
-    return recipes.filter(
-      (recipe) =>
-        (recipe.metadata.tags[0].sys.id === category) & (recipe.sys.id === id)
-    );
+  const filterRecipeById = (id) => {
+    return recipes.filter((recipe) => recipe.sys.id === id)[0];
   };
 
   useEffect(() => {
@@ -40,7 +37,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
         {recipes && (
           <Route
             path="/:category"
@@ -51,8 +48,8 @@ function App() {
         )}
         {recipes && (
           <Route
-            path="/:category/:id"
-            element={<Recipe recipe={filterRecipe(category, id)} />}
+            path="/R/:id"
+            element={<Recipe recipe={filterRecipeById(id)} />}
           />
         )}
         <Route path="*" element={<ErrorPage />} />

@@ -10,16 +10,13 @@
 
 .navbar * {
   text-decoration: none;
-  margin: 10px;
-  color: black;
+  font-size: 2rem;
+  margin: 2vw;
   display: inline-flex;
   flex-wrap: wrap;
-}
-
-.navbar *:hover {
-  color: lightcoral;
+  align-items: center;
 }
 
 .active {
-  color: red;
+  color: orange;
 }
