@@ -6,18 +6,31 @@ export default function Recipe({ recipe }) {
 
   return (
     <div className="recipe">
-      <h2>{recipe?.fields.title}</h2>
-      <img src={recipe?.fields.image.fields.file.url} />
-      <p>Rating: {recipe?.fields.rating}</p>
-      <ul>Ingredients:</ul>
-      {recipe?.fields.ingredients.map((ingredient) => (
-        <li>{ingredient}</li>
-      ))}
-      <p>Directions:</p>
-      <section
-        className="instructions"
-        dangerouslySetInnerHTML={{ __html: recipeInstructions }}
-      />
+      <h1>{recipe?.fields.title}</h1>
+      <div className="column">
+        <div className="left-olumn">
+          <img src={recipe?.fields.image.fields.file.url} />
+        </div>
+        <div className="right-column">
+          <p>Rating: {recipe?.fields.rating}</p>
+          <div className="ingredients">
+            <ul>
+              <h2>Ingredients:</h2>
+              {recipe?.fields.ingredients.map((ingredient) => (
+                <li>{ingredient}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className="directions">
+        <hr />
+        <h2>Directions:</h2>
+        <section
+          className="instructions"
+          dangerouslySetInnerHTML={{ __html: recipeInstructions }}
+        />
+      </div>
     </div>
   );
 }
