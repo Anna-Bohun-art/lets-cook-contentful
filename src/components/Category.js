@@ -1,13 +1,15 @@
 import { NavLink, useParams } from "react-router-dom";
 
-export default function Category({ recipes }) {
+export default function Category({ recipesInCategory }) {
   const { category } = useParams();
 
   return (
     <div className="category">
-      <p>{category}</p>
-      {recipes.map((recipe) => (
-        <NavLink to="/:category/:recipe">{recipe}</NavLink>
+      <div>{category}</div>
+      {recipesInCategory.map((recipe) => (
+        <NavLink to={`/${category}/${recipe.sys.id}`}>
+          <div>{recipe.fields.title}</div>
+        </NavLink>
       ))}
     </div>
   );

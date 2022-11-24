@@ -1,5 +1,5 @@
 import { client } from "./client";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -10,7 +10,22 @@ import ErrorPage from "./components/ErrorPage";
 import "./App.css";
 
 function App() {
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState();
+  const location = useLocation();
+  const [, category, id] = location.pathname.split("/");
+
+  const filterRecipesByCategory = (category) => {
+    return recipes.filter(
+      (recipe) => recipe.metadata.tags[0].sys.id === category
+    );
+  };
+
+  const filterRecipe = (category, id) => {
+    return recipes.filter(
+      (recipe) =>
+        (recipe.metadata.tags[0].sys.id === category) & (recipe.sys.id === id)
+    );
+  };
 
   useEffect(() => {
     client
@@ -21,18 +36,25 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(recipes);
-
   return (
     <div className="App">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/:category" element={<Category recipes={recipes} />} />
-        <Route
-          path="/:category/:recipe"
-          element={<Recipe recipes={recipes} />}
-        />
+        {recipes && (
+          <Route
+            path="/:category"
+            element={
+              <Category recipesInCategory={filterRecipesByCategory(category)} />
+            }
+          />
+        )}
+        {recipes && (
+          <Route
+            path="/:category/:id"
+            element={<Recipe recipe={filterRecipe(category, id)} />}
+          />
+        )}
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
@@ -40,3 +62,5 @@ function App() {
 }
 
 export default App;
+
+// create a new version of your array, which will be a filtered version of your initial prop
