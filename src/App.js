@@ -10,7 +10,7 @@ import ErrorPage from "./components/ErrorPage";
 import "./App.css";
 
 function App() {
-  const [recipes, setRecipes] = useState();
+  const [recipes, setRecipes] = useState([]);
   const location = useLocation();
   const [, category, id] = location.pathname.split("/");
 
@@ -62,5 +62,3 @@ function App() {
 }
 
 export default App;
-
-// create a new version of your array, which will be a filtered version of your initial prop
