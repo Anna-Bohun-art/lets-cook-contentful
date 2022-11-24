@@ -5,7 +5,7 @@ export default function Category({ recipesInCategory }) {
 
   return (
     <div className="category">
-      <div>{category}</div>
+      <h2>{category} recipes</h2>
       {recipesInCategory.map((recipe) => (
         <NavLink key={recipe.sys.id} to={`/R/${recipe.sys.id}`}>
           <div>{recipe.fields.title}</div>

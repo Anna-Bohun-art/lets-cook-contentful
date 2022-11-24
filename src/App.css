@@ -6,17 +6,27 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   text-align: center;
+  background-color: darkgrey;
+  color: black;
 }
 
-.navbar * {
-  text-decoration: none;
-  font-size: 2rem;
+.navbar {
   margin: 2vw;
   display: inline-flex;
   flex-wrap: wrap;
-  align-items: center;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.nav-item {
+  text-decoration: none;
 }
 
 .active {
   color: orange;
+}
+
+.instructions {
+  margin: 0 auto;
+  width: 60%;
 }
