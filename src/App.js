@@ -16,18 +16,18 @@ function App() {
 
   const filterRecipesByCategory = (category) => {
     return recipes.filter(
-      (recipe) => recipe.metadata.tags[0].sys.id === category
+      (recipe) => recipe?.metadata.tags[0]?.sys.id === category
     );
   };
 
   const filterRecipeById = (id) => {
-    return recipes.filter((recipe) => recipe.sys.id === id)[0];
+    return recipes?.filter((recipe) => recipe.sys.id === id)[0];
   };
 
   const getCatgoryList = () => {
     return [
-      ...new Set(recipes.map((recipe) => recipe.metadata.tags[0].sys.id)),
-    ];
+      ...new Set(recipes?.map((recipe) => recipe.metadata.tags[0]?.sys.id)),
+    ].filter(Boolean);
   };
 
   useEffect(() => {
@@ -41,7 +41,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar categoryList={getCatgoryList()} />
+      {recipes && <Navbar categoryList={getCatgoryList()} />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         {recipes && (
