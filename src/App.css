@@ -21,6 +21,15 @@
 .nav-item {
   text-decoration: none;
 }
+
+.navbar h3:first-letter {
+  text-transform: capitalize;
+}
+
+.category h2:first-letter {
+  text-transform: capitalize;
+}
+
 .column {
   width: 70%;
   margin-top: 3%;
