@@ -9,10 +9,7 @@ export default function Recipe({ recipe }) {
       <h1>{recipe?.fields.title}</h1>
       <div className="column">
         <div className="left-olumn">
-          <img
-            src={recipe?.fields.image.fields.file.url}
-            alt={recipe?.fields.title}
-          />
+          <img src={recipe?.fields.image.fields.file.url} alt="" />
         </div>
         <div className="right-column">
           <p>Rating: {recipe?.fields.rating}</p>
