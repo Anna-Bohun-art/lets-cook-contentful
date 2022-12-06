@@ -6,8 +6,8 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   text-align: center;
-  background-color: #fff;
-  color: black;
+  /*background-color: #fff;
+  color: black;*/
 }
 
 .navbar {
@@ -66,7 +66,9 @@
 .ingredients ul {
   list-style: none; /* Remove default bullets */
 }
-
+.navbar h3:first-letter {
+  text-transform: capitalize;
+}
 .ingredients ul li::before {
   content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
   color: red; /* Change the color */
