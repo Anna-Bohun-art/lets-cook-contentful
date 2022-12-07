@@ -8,6 +8,7 @@
   text-align: center;
   background-color: #fff;
   color: black;
+  
 }
 
 .navbar {
@@ -110,4 +111,14 @@
 }
 .column {
   display: flex;
+}
+
+.category {
+  display: flex;
+  gap: 10px;
+  gap: 10px 20px; 
+  row-gap: 10px;
+  column-gap: 20px;
+  flex-direction: column;
+
 }
