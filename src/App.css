@@ -6,57 +6,18 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   text-align: center;
-  background-color: #fff;
-  color: black;
-  
 }
-
-.navbar {
-  margin: 2vw;
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 40%;
-}
-
-.nav-item {
-  text-decoration: none;
-}
-
-.navbar h3:first-letter {
-  text-transform: capitalize;
-}
-
-.category h2:first-letter {
-  text-transform: capitalize;
-}
-
-.column {
-  width: 70%;
-  margin-top: 3%;
-  margin-left: auto;
-  margin-right: auto;
-}
-.right-column {
-  padding-top: 5%;
-}
-.active h1 {
-  text-decoration: underline;
-}
+/* 
 .active {
-  color: red;
-}
-.nav-item:hover {
-  color: #d54215;
-  text-decoration: underline;
+  font-weight: bold;
 }
 .instructions {
   margin: 0 auto;
   width: 60%;
 }
-.recipe h1:hover {
-  color: #d54215;
-  text-decoration: underline;
+.recipe h1:#d54215;
+  text-dechover {
+  color: oration: underline;
 }
 .recipe img {
   padding-top: 2%;
@@ -74,16 +35,16 @@
   font-size: 20px;
 }
 .ingredients ul {
-  list-style: none; /* Remove default bullets */
+  list-style: none; /* Remove default bullets 
 }
 
 .ingredients ul li::before {
-  content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
-  color: red; /* Change the color */
-  font-weight: bold; /* If you want it to be bold */
-  display: inline-block; /* Needed to add space between the bullet and the text */
-  width: 1em; /* Also needed for space (tweak if needed) */
-  margin-left: -1em; /* Also needed for space (tweak if needed) */
+  content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet
+  color: red; /* Change the color 
+  font-weight: bold; /* If you want it to be bold 
+  display: inline-block; /* Needed to add space between the bullet and the text 
+  width: 1em; /* Also needed for space (tweak if needed) 
+  margin-left: -1em; /* Also needed for space (tweak if needed) *
 }
 .ingredients h2:hover {
   color: #d54215;
@@ -111,7 +72,7 @@
 }
 .column {
   display: flex;
-}
+} */
 
 .category {
   display: flex;
