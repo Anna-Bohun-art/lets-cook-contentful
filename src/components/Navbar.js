@@ -23,9 +23,9 @@ export default function Navbar({ categoryList }) {
           <NavLink
             sx={{ bgcolor: "secondary" }}
             style={{ textDecoration: "none" }}
-            to={category}
+            to={`/${category.id}`}
           >
-            {category}
+            {category.name}
           </NavLink>
         </Button>
       ))}
