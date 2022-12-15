@@ -4,19 +4,22 @@ const toggleMode = (mode) => ({
     ...(mode === "light"
       ? {
           // palette values for light mode
+          background: {
+            default: "#f3e5f5",
+          },
           text: {
-            primary: "#1c1c1c",
-            secondary: "#333",
+            primary: "#000",
+            secondary: "#e57373",
           },
         }
       : {
           // palette values for dark mode
           background: {
-            default: "#1c1c1c",
+            default: "#000",
           },
           text: {
             primary: "#fff",
-            secondary: "#b6b6b6",
+            secondary: "#f44336",
           },
         }),
   },

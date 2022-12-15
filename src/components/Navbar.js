@@ -10,13 +10,21 @@ export default function Navbar({ categoryList }) {
       mb={4}
     >
       <Button size="small">
-        <NavLink style={{ textDecoration: "none" }} to="/">
+        <NavLink
+          sx={{ bgcolor: "secondary" }}
+          style={{ textDecoration: "none" }}
+          to="/"
+        >
           Home
         </NavLink>
       </Button>
       {categoryList.map((category) => (
         <Button size="small">
-          <NavLink style={{ textDecoration: "none" }} to={category}>
+          <NavLink
+            sx={{ bgcolor: "secondary" }}
+            style={{ textDecoration: "none" }}
+            to={category}
+          >
             {category}
           </NavLink>
         </Button>
