@@ -17,24 +17,21 @@ import { useThemeContext } from "./ThemeContext";
 import "./App.css";
 
 function App() {
-  const [getCategories, setGetCategories] = useState(false);
-  const [getRecipesInCategory, setGetRecipesInCategory] = useState(false);
-  const [getRecipeInfo, setGetRecipeInfo] = useState(false);
-
   const [fetchResults, setFetchResults] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const location = useLocation();
   const [, category, id] = location.pathname.split("/");
 
-  const baseURL = "http://localhost:8080";
+  const baseURL =
+    "http://recipebackend-env-1.eba-hrveypmi.us-east-1.elasticbeanstalk.com";
+  // "http://localhost:8080";
   const GetCategoriesURL = baseURL + `/api/categories`;
   const GetRecipesInCategoryURL = baseURL + `/api/${category}/recipes`;
-  const GetRecipeInfoURL = baseURL + `/api/${id}`;
+  const GetRecipeInfoURL = baseURL + `/api/recipe/${id}`;
 
   const { mode, setMode } = useThemeContext();
   const theme = useTheme();
-
-  console.log(fetchResults);
 
   const isFirstRender = useRef(true);
 
@@ -43,8 +40,7 @@ function App() {
   }
 
   useEffect(() => {
-    setGetCategories(true);
-    fetchData(GetCategoriesURL);
+    axios.get(GetCategoriesURL).then((res) => setCategories(res.data));
   }, []);
 
   useEffect(() => {
@@ -52,43 +48,16 @@ function App() {
       isFirstRender.current = false;
       return; // return early if first render
     }
-    setGetCategories(false);
     fetchData(GetRecipesInCategoryURL);
   }, [category]);
 
-  // useEffect(() => {
-  //   fetchData(GetRecipeInfoURL);
-  // }, [getRecipeInfo]);
-
-  // const filterRecipesByCategory = () => {
-  //   setGetRecipesInCategory(!getRecipesInCategory);
-
-  // return fetchResults.filter(
-  //   (recipe) => recipe?.metadata.tags[0]?.sys.id === category
-  // );
-  //});
-  // };
-
-  // const filterRecipeById = () => {
-  //   setGetRecipeInfo(!getRecipeInfo);
-
-  //   //   return recipes?.filter((recipe) => recipe.sys.id === id)[0];
-  // };
-
-  // const getCatgoryList = () => {
-  //   return [
-  //     ...new Set(recipes?.map((recipe) => recipe.metadata.tags[0]?.sys.id)),
-  //   ].filter(Boolean);
-  // };
-
-  // useEffect(() => {
-  //   client
-  //     .getEntries()
-  //     .then((res) => {
-  //       setRecipes(res.items);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return; // return early if first render
+    }
+    fetchData(GetRecipeInfoURL);
+  }, [id]);
 
   return (
     <>
@@ -105,19 +74,20 @@ function App() {
         )}
       </IconButton>
       <div>
-        {getCategories && <Navbar categoryList={fetchResults} />}
+        <Navbar categoryList={categories} />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {fetchResults && (
-            <Route
-              path="/:category"
-              element={<Category recipesInCategory={fetchResults} />}
-            />
-          )}
-          {/* {fetchResults && (
-            <Route path="/R/:id" element={<Recipe recipe={fetchResults} />} />
-          )}
-          <Route path="*" element={<ErrorPage />} /> */}
+          <Route
+            path="/:category"
+            element={
+              <Category
+                categories={categories}
+                recipesInCategory={fetchResults}
+              />
+            }
+          />
+          <Route path="/R/:id" element={<Recipe recipe={fetchResults} />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
     </>
