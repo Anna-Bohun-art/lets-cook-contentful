@@ -8,6 +8,9 @@ export default function Recipe({ recipe }) {
   return (
     <Box className="recipe" sx={{ bgcolor: "default" }}>
       <Typography variant="h1Variant">{recipe?.fields.title}</Typography>
+      <Typography sx={{ color: "primary" }} variant="h1Variant">
+        {recipe?.fields.title}
+      </Typography>
       <Box className="column">
         <Box className="left-column" sx={{ bgcolor: "default" }}>
           <img
@@ -17,6 +20,8 @@ export default function Recipe({ recipe }) {
         </Box>
         <Box className="right-column" sx={{ bgcolor: "default" }}>
           <Typography variant="textVariant">
+        <Box className="right-column">
+          <Typography sx={{ color: "secondary" }} variant="textVariant">
             Rating: {recipe?.fields.rating}
           </Typography>
           <div className="ingredients">
@@ -25,6 +30,14 @@ export default function Recipe({ recipe }) {
               {recipe?.fields.ingredients.map((ingredient) => (
                 <li>{ingredient}</li>
               ))}
+              <Typography sx={{ color: "secondary" }} variant="h2Variant">
+                Ingredients:
+              </Typography>
+              <Typography sx={{ color: "primary" }}>
+                {recipe?.fields.ingredients.map((ingredient) => (
+                  <li>{ingredient}</li>
+                ))}
+              </Typography>
             </ul>
           </div>
         </Box>
@@ -32,6 +45,9 @@ export default function Recipe({ recipe }) {
       <div className="directions">
         <hr />
         <Typography variant="h2Variant">Directions:</Typography>
+        <Typography sx={{ color: "primary" }} variant="h2Variant">
+          Directions:
+        </Typography>
         <section
           className="instructions"
           dangerouslySetInnerHTML={{ __html: recipeInstructions }}
