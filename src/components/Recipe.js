@@ -6,16 +6,16 @@ export default function Recipe({ recipe }) {
     recipe && marked(recipe?.fields.instructions_field);
 
   return (
-    <Box className="recipe" sx={{ bgcolor: "primary.light" }}>
+    <Box className="recipe" sx={{ bgcolor: "default" }}>
       <Typography variant="h1Variant">{recipe?.fields.title}</Typography>
       <Box className="column">
-        <Box className="left-column" sx={{ bgcolor: "primary.main" }}>
+        <Box className="left-column" sx={{ bgcolor: "default" }}>
           <img
             src={recipe?.fields.image.fields.file.url}
             alt={recipe?.fields.title}
           />
         </Box>
-        <Box className="right-column" sx={{ bgcolor: "primary.main" }}>
+        <Box className="right-column" sx={{ bgcolor: "default" }}>
           <Typography variant="textVariant">
             Rating: {recipe?.fields.rating}
           </Typography>
